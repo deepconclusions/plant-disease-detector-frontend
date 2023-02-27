@@ -1,0 +1,33 @@
+{% extends 'plants/base.html' %} {% block content %}
+<section class="p-2 p-md-5 mx-md-5">
+  <div class="p-3">
+    <h3 class="text-success font-weight-bold text-center">
+      <i class="fa-solid fa-camera-retro"></i> Deep Conc-Lens
+    </h3>
+    <h2 class="text-center">Welcome, Login</h2>
+  </div>
+  <div class="row">
+    <aside class="col-md-6 col-12 text-center p-2">
+      <div class="d-none d-md-block font-lg">
+        <i
+          class="fa-solid fa-right-to-bracket"
+          style="font-weight: 10em; font-size: 10em"
+        ></i>
+      </div>
+    </aside>
+    <main class="col-12 col-md-6">
+      <form action="login" method="POST" class="form-control p-5">
+        {% csrf_token %} {{form}} {% if request.GET.next %}
+        <input type="hidden" name="next" value="{{ request.GET.next }}" />
+        {% endif %}
+        <input class="btn btn-success" type="submit" value="Let me in" />
+      </form>
+      <div class="d-flex text-center p-3">
+        <p>Don't have account?</p>
+        <a href="/accounts/signup"> Let's Sign You Up</a>
+      </div>
+    </main>
+  </div>
+</section>
+
+{% endblock content %}
