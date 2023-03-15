@@ -1,0 +1,40 @@
+{% extends 'plants/base.html' %} {% block content %}
+<div class="container mt-5">
+  <div class="row justify-content-center">
+    <div class="col-md-8">
+      <h2 class="mb-4">Corn Disease Prediction Results</h2>
+      <div class="card mb-4">
+        <div class="card-body">
+          <h5 class="card-title">Image</h5>
+          <img
+            src="{{ image.image.url }}"
+            class="img-fluid mb-3"
+            alt="corn image"
+          />
+        </div>
+      </div>
+      {% if result %}
+      <div class="card mb-4">
+        <div class="card-body">
+          <h5 class="card-title">Prediction</h5>
+          <p class="card-text">
+            The predicted class is <strong>{{ result.label }}</strong> with a
+            confidence of {{ result.confidence|floatformat:2 }}.
+          </p>
+          <p class="card-text">{{ result.description }}</p>
+        </div>
+      </div>
+      {% else %}
+      <div class="alert alert-danger" role="alert">{{ error_message }}</div>
+      {% endif %}
+      <div class="mt-4">
+        <a
+          href="{% url 'predictor:upload_image' plant_name %}"
+          class="btn btn-primary"
+          >Try Again</a
+        >
+      </div>
+    </div>
+  </div>
+</div>
+{% endblock %}

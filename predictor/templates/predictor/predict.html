@@ -1,3 +1,78 @@
-{% extends 'plants/base.html' %}
-<h1>Predict</h1>
-{% block content %}{% endblock content %}
+{% extends 'plants/base.html' %} {% block content %} {% load static %}
+<style>
+  .image-upload-form input {
+    border: 1px solid gray;
+    border-radius: 0.25em;
+  }
+
+  .image-upload-form label {
+    font-weight: medium;
+  }
+</style>
+<section class="upload-section px-md-5 rounded fw-light">
+  <div class="border rounded shadow p-md-5">
+    <div class="row">
+      <div class="col-12">
+        <div class="guide p-3 pt-md-3 px-md-3">
+          <h3 class="">Upload {{plant_name}} image for Disease Prediction</h3>
+        </div>
+      </div>
+
+      <div class="form-container">
+        <form
+          action="tomato"
+          method="post"
+          enctype="multipart/form-data"
+          class="image-upload-form d-flex flex-md-row flex-column p-3"
+        >
+          {% csrf_token %} {{ form.as_p }}
+          <div class="px-md-5">
+            <input type="submit" value="Upload Image" class="btn btn-success" />
+          </div>
+        </form>
+      </div>
+
+      <div class="border rounded p-md-5 p-3">
+        <figure class="d-flex image-container">
+          {% if images %} {% for img in images %}
+          <div class="px-3 image-box mb-3">
+            <img
+              src="{{img.image.url}}"
+              class="align-middle rounded img-fluid"
+              width="300"
+              height="600"
+            />
+            <div class="image-label d-flex mt-1">
+              <p>{{img.name}}</p>
+              <a
+                href="/predictor/delete_image/{{plant_name}}/{{img.id}}"
+                class="delete-btn btn btn-danger"
+                >Remove</a
+              >
+            </div>
+          </div>
+          {% endfor %} {% else %}
+          <div class="image-placeholder rounded text-center">
+            Images will appear here
+          </div>
+          {% endif %}
+        </figure>
+      </div>
+    </div>
+
+    <div class="row justify-content-center">
+      <div class="col-12 col-md-6 text-center">
+        <div class="prediction-btn-container">
+          <a
+            href="{% url 'predictor:get_predictions' plant_name%}"
+            class="btn btn-primary predict-btn btn-block"
+          >
+            Get Predictions
+          </a>
+        </div>
+      </div>
+    </div>
+  </div>
+</section>
+
+{% endblock content %}

@@ -17,8 +17,14 @@ from django.contrib import admin
 from django.urls import path
 from . import views
 
+app_name = "predictor"
+
 urlpatterns = [
-    path("upload_image", views.uploadImage, name="upload_image"),
-    path("get_predictions", views.getPredictions, name="get_predictions"),
-    path("delete_image/<int:id>", views.deleteImage, name="delete_image")
+    path("select_plant", views.selectPlant, name="select_plant"),
+    path("upload_image/<str:plant_name>",
+         views.uploadImage, name="upload_image"),
+    # path("get_single_prediction/<int:id>",
+    #      views.getSinglePrediction, name="get_single_prediction"),
+    path("get_predictions/<str:plant_name>", views.getPredictions, name="get_predictions"),
+    path("delete_image/<str:plant_name>/<int:id>", views.deleteImage, name="delete_image")
 ]

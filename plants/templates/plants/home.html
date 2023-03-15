@@ -1,4 +1,248 @@
 {% extends 'plants/base.html' %} {% block content %}
-<h1>Home</h1>
 
-{% endblock content%}
+<div class="px-4 pt-5 my-5 text-center border-bottom">
+  <h1 class="fw-bold">Deep Conc-Lens, An Easy Way</h1>
+  <h1 class="fw-bold">to Detect Plant Diseases</h1>
+  <div class="col-lg-6 mx-auto">
+    <p class="lead mb-4">
+      Our system has models that have been trained over a large range of
+      datasets to ensure accuracy and optimized for speed.
+    </p>
+    <div class="d-grid gap-2 d-sm-flex justify-content-sm-center mb-5">
+      <a
+        href="{% url 'predictor:select_plant'%}"
+        class="btn btn-warning px-4 me-sm-3"
+      >
+        Start For Free
+      </a>
+    </div>
+  </div>
+  <div class="" style="">
+    <div class="container px-5">
+      <img
+        src="media/deep/DeepConcLens3.png"
+        class="img-fluid border rounded-3 shadow-lg mb-4"
+        alt="Example image"
+        width="900"
+        height="700"
+        loading="lazy"
+      />
+    </div>
+  </div>
+</div>
+<div class=""></div>
+<section class="px-md-5 px-2 pt-5 my-5 border-bottom fw-light">
+  <div class="m-5 row d-flex justify-content-between">
+    <main class="col-md-6 col-12">
+      <h4 class="fw-bold">GET STARTED IN MINUTES</h4>
+      <h2>Detect diseases in plants, fast, easily</h2>
+      <p>
+        Our intuitive software platform enables anyone to easily detect diseases
+        in plants, without any prior AI knowledge. With just a few clicks, you
+        can upload images of your plants and get fast, accurate results in
+        minutes. Our AI-powered algorithms analyze the images to identify signs
+        of disease, allowing you to quickly take action and protect your crops.
+        This solution is both affordable and user-friendly, making it accessible
+        to farmers and plant enthusiasts of all levels. Don't let plant diseases
+        go undetected - try our platform today and start detecting with ease.
+      </p>
+    </main>
+    <aside class="col-md-3 col-12">
+      <img
+        src="media/deep/black_rot.jpg"
+        width="100%"
+        class="img-fluid border shadow rounded"
+      />
+    </aside>
+  </div>
+</section>
+<section
+  class="px-md-5 px-2 pt-5 my-5 border-bottom text-light fw-light bg-success"
+>
+  <div class="m-5 row d-flex justify-content-between">
+    <aside class="col-md-3 col-12">
+      <img src="media/deep/black_rot.jpg" width="100%" class="rounded" />
+    </aside>
+    <main class="col-md-6 col-12 pt-5">
+      <h4 class="fw-bold">HIGER SPEED, GREATER ACCURACY</h4>
+      <h2>Artificial intelligence maximises speed and accuracy</h2>
+      <p>
+        Artificial intelligence (AI) used in our systems has the ability to
+        significantly improve disease detection by maximizing both speed and
+        accuracy. Using advanced algorithms and machine learning techniques, AI
+        can quickly analyze large amounts of data, identify patterns and
+        anomalies, and provide highly accurate diagnoses in real-time.
+      </p>
+    </main>
+  </div>
+</section>
+<div class="container">
+  <div class="row">
+    <div class="col-12">
+      <h1 class="text-center">How It Works</h1>
+      <p class="fw-light text-center">
+        Check out how Deep Conc-Lens makes plant disease detection super easy
+        and delivers accurate predictions faster.
+      </p>
+    </div>
+  </div>
+  <div class="row">
+    <div class="col-12">
+      <div class="accordion" id="accordionExample">
+        <div class="accordion-item">
+          <h2 class="accordion-header" id="headingOne">
+            <button
+              class="accordion-button"
+              type="button"
+              data-bs-toggle="collapse"
+              data-bs-target="#collapseOne"
+              aria-expanded="true"
+              aria-controls="collapseOne"
+            >
+              Step 1
+            </button>
+          </h2>
+          <div
+            id="collapseOne"
+            class="accordion-collapse collapse show"
+            aria-labelledby="headingOne"
+            data-bs-parent="#accordionExample"
+          >
+            <div class="p-md-5 m-md-5 accordion-body d-flex row">
+              <div class="col-md-6">
+                <h2>Select plant to detect disease from</h2>
+                <p>
+                  To use our disease detection system, the first step is to
+                  select the plant you want to analyze. We offer a range of
+                  models for different plants, including corn, pepper, peach,
+                  and tomatoes, all powered by our advanced AI algorithms.
+                  Simply choose the plant you want to analyze from our list, and
+                  our system will automatically apply the appropriate model to
+                  the images you upload.
+                </p>
+              </div>
+              <div class="col-md-6">
+                <img
+                  src="media/deep/DeepConcLens3.png"
+                  class="img-fluid border rounded-3 shadow-lg mb-4"
+                  alt="Example image"
+                  width="500"
+                  height="300"
+                  loading="lazy"
+                />
+              </div>
+            </div>
+          </div>
+        </div>
+        <div class="accordion-item">
+          <h2 class="accordion-header" id="headingTwo">
+            <button
+              class="accordion-button collapsed"
+              type="button"
+              data-bs-toggle="collapse"
+              data-bs-target="#collapseTwo"
+              aria-expanded="false"
+              aria-controls="collapseTwo"
+            >
+              Step 2
+            </button>
+          </h2>
+          <div
+            id="collapseTwo"
+            class="accordion-collapse collapse"
+            aria-labelledby="headingTwo"
+            data-bs-parent="#accordionExample"
+          >
+            <div
+              class="p-md-5 m-md-5 accordion-body d-flex justify-content-between"
+            >
+              <div>
+                <h2>Select leaf images</h2>
+                <p>
+                  Choose leaf images from which you want to detect the disease
+                </p>
+                <p>
+                  Notice that when you change your mind, you can remove the
+                  images
+                </p>
+                <p>
+                  Click "Get Predictions" button to get the prediction of the
+                  diseases in your plant
+                </p>
+              </div>
+              <div class="">
+                <img
+                  src="media/deep/DeepConcLens3.png"
+                  class="img-fluid border rounded-3 shadow-lg mb-4"
+                  alt="Example image"
+                  width="500"
+                  height="300"
+                  loading="lazy"
+                />
+              </div>
+            </div>
+          </div>
+        </div>
+        <div class="accordion-item">
+          <h2 class="accordion-header" id="headingThree">
+            <button
+              class="accordion-button collapsed"
+              type="button"
+              data-bs-toggle="collapse"
+              data-bs-target="#collapseThree"
+              aria-expanded="false"
+              aria-controls="collapseThree"
+            >
+              Step 3
+            </button>
+          </h2>
+          <div
+            id="collapseThree"
+            class="accordion-collapse collapse"
+            aria-labelledby="headingThree"
+            data-bs-parent="#accordionExample"
+          >
+            <div
+              class="p-md-5 m-md-5 accordion-body d-flex justify-content-between"
+            >
+              <div>
+                <h2>View Results</h2>
+                <p>
+                  After a few seconds, you should be redirected to the "Results"
+                  page from which your results will be displayed
+                </p>
+                <p>
+                  Notice that you can run another test with the same or
+                  different image to confirm the prediction
+                </p>
+              </div>
+              <div class="">
+                <img
+                  src="media/deep/DeepConcLens3.png"
+                  class="img-fluid border rounded-3 shadow-lg mb-4"
+                  alt="Example image"
+                  width="500"
+                  height="300"
+                  loading="lazy"
+                />
+              </div>
+            </div>
+          </div>
+        </div>
+      </div>
+    </div>
+  </div>
+</div>
+
+<section class="px-4 pt-5 my-5 border-bottom text-light fw-light bg-success">
+  <div class="p-md-5 m-5 row d-flex justify-content-between">
+    <h2 class="col-6">See How Easy Plant Disease Detection Can Be</h2>
+    <div class="col-6 d-flex flex-column align-content-center">
+      <p>Detect deases in your plants with out technology</p>
+      <a href="" class="d-inline-block text-center btn btn-warning">
+        Start For Free
+      </a>
+    </div>
+  </div>
+</section>
+{% endblock content %}
