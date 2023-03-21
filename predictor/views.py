@@ -1,6 +1,6 @@
 import requests
 import pathlib
-from django.shortcuts import render, redirect
+from django.shortcuts import render, redirect, HttpResponse
 from .forms import ImageUploadForm
 from django.shortcuts import get_object_or_404
 from .models import Image
@@ -9,6 +9,9 @@ from django.contrib.auth.decorators import login_required
 # Create your views here.
 
 BASE_DIR = pathlib.Path(__file__).resolve().parent.parent
+
+def colored(r, g, b, text):
+    return "\033[38;2;{};{};{}m{} \033[38;2;255;255;255m".format(r, g, b, text)
 
 
 @login_required(login_url='/accounts/login')
@@ -47,7 +50,7 @@ def uploadImage(request, plant_name):
 def deleteImage(request, plant_name, id):
     image = get_object_or_404(Image, id=id)
     image.delete()
-    return redirect("predictor:upload_image/", plant_name)
+    return redirect("predictor:upload_image", plant_name )
 
 
 def getPredictions(request, plant_name):
@@ -60,34 +63,30 @@ def getPredictions(request, plant_name):
         print(e)  # Debug output
         images = []
     image_url = images[0].image.url
-    # # Define the API endpoint
-    # api_endpoint = 'http://127.0.0.1:8000/corn/single-prediction/'
+    # Define the API endpoint
+    api_endpoint = f'http://127.0.0.1:8001/{plant_name}/single-prediction/'
 
-    # # Set the headers
-    # headers = {'Content-Type': 'multipart/form-data'}
+    # Set the headers
+    headers = {}
 
-    # # Create a dictionary with the image file and any other form data you want to send
-    # data = {'image': open(f"{BASE_DIR}{image_url}", 'rb')}
+    # Set payload
+    payload = {}
 
-    # print(data)
-    # # Send the POST request
-    # response = requests.post(api_endpoint, headers=headers, files=data)
+    # Create a dictionary with the image file and any other form data you want to send
+    files = [(f'{plant_name}-image', open(f"{BASE_DIR}{pathlib.Path(image_url)}", 'rb'))]
 
-    # # If the request was successful, parse the JSON response
-    # if response.status_code == 200:
-    #     json_response = response.json()
-    #     # Do something with the JSON response
-    #     print(json_response)
-    #     return json_response
-    # else:
-    #     # Handle the error
-    #     print(f'Request failed with status code {response.status_code}')
-    result = {
-        "prediction": 999,
-        "label": "No predicton",
-        "confidence": 0.0,
-        "description": "No description",
-        "value_error": f"Either No {plant_name} image is provided or It is not labelled, make sure to label with 'corn-image'"
-    }
+    print(colored(0, 0, 255, f"{BASE_DIR}{pathlib.Path(image_url)}"))
 
-    return render(request, "predictor/result.html", {"image": images[0], "result": result, "plant_name":plant_name})
+    # Send the POST request
+    response = requests.post(api_endpoint, headers=headers, files=files)
+    # response = requests.get(api_endpoint)
+    print(colored(0, 0, 255, str(response)))
+
+    # If the request was successful, parse the JSON response
+    if response.status_code == 200:
+        json_response = response.json()
+        # Do something with the JSON response
+        return render(request, "predictor/result.html", {"image": images[0], "result": json_response, "plant_name":plant_name})
+    else:
+        # Handle the error
+        return HttpResponse(f'Request failed with status code {response.status_code}')

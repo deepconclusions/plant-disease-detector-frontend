@@ -20,7 +20,7 @@
 
       <div class="form-container">
         <form
-          action="tomato"
+          action="{% url 'predictor:upload_image' plant_name %}"
           method="post"
           enctype="multipart/form-data"
           class="image-upload-form d-flex flex-md-row flex-column p-3"
@@ -43,7 +43,6 @@
               height="600"
             />
             <div class="image-label d-flex mt-1">
-              <p>{{img.name}}</p>
               <a
                 href="/predictor/delete_image/{{plant_name}}/{{img.id}}"
                 class="delete-btn btn btn-danger"
@@ -64,7 +63,7 @@
       <div class="col-12 col-md-6 text-center">
         <div class="prediction-btn-container">
           <a
-            href="{% url 'predictor:get_predictions' plant_name%}"
+            href="{% url 'predictor:get_predictions' plant_name %}"
             class="btn btn-primary predict-btn btn-block"
           >
             Get Predictions

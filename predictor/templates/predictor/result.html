@@ -9,7 +9,7 @@
           <img
             src="{{ image.image.url }}"
             class="img-fluid mb-3"
-            alt="corn image"
+            alt="plant image"
           />
         </div>
       </div>
@@ -21,7 +21,9 @@
             The predicted class is <strong>{{ result.label }}</strong> with a
             confidence of {{ result.confidence|floatformat:2 }}.
           </p>
-          <p class="card-text">{{ result.description }}</p>
+            <p class="card-text">
+              {{ result.description }}
+            </p>
         </div>
       </div>
       {% else %}

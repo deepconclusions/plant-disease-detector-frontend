@@ -1,4 +1,122 @@
-{% extends 'plants/base.html' %} {% block content %}
-<h1>About</h1>
+{% extends 'plants/base.html' %}
+{% block content %}
+{% load static %}
 
+<section class="mb-5">
+    <div class="p-5 text-center d-flex flex-column justify-content-center">
+        <h1 class="fw-bold">About Us</h1>
+        <p class="fw-light align-self-center" style="width: 50%;">
+            Deep conc-lens is a cutting-edge software platform makes disease detection easy for both individual farmers and enterprises.
+        </p>
+    </div>
+    <div class="row p-5 mx-5 justify-content-between">
+        <main class="col-md-5">
+            <h2 class="fw-bold">Our Founding Story</h2>
+            <p class="fw-light">Lorem, ipsum dolor sit amet consectetur adipisicing elit. Accusantium tempore cupiditate voluptatibus ex eos alias. Excepturi ipsam nihil inventore recusandae facilis ad minima? Quasi distinctio animi cum ex, dicta doloremque soluta voluptates laborum blanditiis eligendi consectetur, cupiditate tempora. Ipsum dolore id dolores, ducimus quidem laborum nostrum libero earum, itaque vel reiciendis ipsam, quam asperiores. Ex laboriosam recusandae iure earum minus ipsum amet! Explicabo nesciunt soluta quas tempore maxime eos, iusto doloribus tempora neque dolorem id blanditiis molestias dignissimos iure numquam ea aspernatur, dicta ab. Asperiores eligendi et porro, nisi modi dolor ipsam odit nulla provident quibusdam quia. Veniam, iusto laborum.</p>
+        </main>
+        <aside class="col-md-5">
+            <img class="img-fluid rounded" src="{% static 'deep/team1.jpg'%}" alt="Team" width="500" height="500">
+        </aside>
+    </div>
+    <div class="row p-5 mx-5 justify-content-between">
+        <main class="col-md-5">
+            <h1 class="fw-bold">Team Culture</h1>
+            <p class="fw-light">We are a diverse team of passionate visionaries who are dedicated to democratizing the power of AI. We are inspired by the promise of the next generation of AI in shaping the way we live, work, and play. Our culture is fast-paced, collaborative, and constantly learning. Our work environment is open so our teams feel the freedom to identify the best solutions to the many questions that most are not asking.</p>
+        </main>
+        <aside class="col-md-5">
+            <img class="img-fluid rounded" src="{% static 'deep/team1.jpg'%}" alt="Team" width="500" height="500">
+        </aside>
+    </div>
+    <div class="p-5 mx-5">
+        <div>
+            <h2 class="fw-bold">Deep Conc-lens Principles</h2>
+        <p class="fw-light">Landing AI Principles (LAPs) are a codification of our way of work. Similar to our DNA, these principles guide us in our work and provide us with a framework for our decision making – be it customer engagement, product development, hiring and talent management, business operations, or sales & support. These principles are intended to align our thought process as leaders of the organization and influence our way of working with people and teams across locations and with businesses.</p>
+        </div>
+        <div class="d-flex flex-column">
+            <div class="row justify-content-between py-5">
+                <div class="col-md-3">
+                    <!-- <i style= "font-size: 50px;" class="text-success p-3 fa-solid fa-heart-pulse"></i> -->
+                    <h4 class="fw-bold">FOCUS ON CLIENTS</h4>
+                    <p class="fw-light" class="fw-light">We start with the customer and work backwards to earn and preserve customer trust. While we pay attention to competitors and listen to our advisors, our sole focus is to make our customers successful.</p>
+                </div>
+                <div class="col-md-3">
+                    <!-- <i style= "font-size: 50px;" class="text-success p-3 fa-brands fa-artstation"></i> -->
+                    <h4 class="fw-bold">MOVE FAST</h4>
+                    <p class="fw-light" class="fw-light">We believe in our work’s ability to change human lives. Because the cost of indecision can be more than the cost of a wrong decision, we emphasize high-speed decision making and execution while insisting on the highest standards.</p>
+                </div>
+                <div class="col-md-3">
+                    <!-- <i style= "font-size: 50px;" class="text-success p-3 fa-solid fa-dumbbell"></i> -->
+                    <h4 class="fw-bold">DIVE DEEP</h4>
+                    <p class="fw-light" class="fw-light">We dive deep to understand the problem, enforce accountability, and drive clarity. We are flexible in using our skills to do whatever it takes to achieve our goal and no task is beneath us.</p>
+                </div>
+            </div>
+            <div class="row justify-content-between">
+                <div class="col-md-3">
+                    <!-- <i style= "font-size: 50px;" class="text-success p-3 fa-solid fa-chalkboard-user"></i> -->
+                    <h4 class="fw-bold">HAVE GRIT</h4>
+                    <p class="fw-light" class="fw-light">We exhibit firmness of character and indomitable spirit when faced with challenges. We consistently back ourselves and inspire our teams to power through the low moments.</p>
+                </div>
+                <div class="col-md-3">
+                    <!-- <i style= "font-size: 50px;" class="text-success p-3 fa-solid fa-hourglass-end"></i> -->
+                    <h4 class="fw-bold">EARN TRUST</h4>
+                    <p class="fw-light" class="fw-light">We build an environment of trust. We hyperfocus on inclusiveness, honest and direct communication, ownership, and being vocally self-critical. We care and watch out for each other. We’re humble individually and proud together.</p>
+                </div>
+                <div class="col-md-3">
+                    <!-- <i style= "font-size: 50px;" class="text-success p-3 fa-solid fa-calendar-days"></i> -->
+                    <h4 class="fw-bold">STAY HUNGRY</h4>
+                    <p class="fw-light" class="fw-light">We are eager to solve challenging problems and acquire new skills. We understand that staying on the bleeding edge is hard work and we are committed to invest in our continual development.</p>
+                </div>
+            </div>
+        </div>
+    </div>
+    <div class="p-5 mx-5 row justify-content-between bg-light rounded">
+        <div>
+            <h2 class="fw-bold text-center pb-5">Our Team</h2>
+        </div>
+        <div class="col-md-3 text-center">
+            <img style = "background-color: white;" class="img-fuid rounded-circle shadow-sm" src="{% static 'deep/olimi_expedito.png'%}" alt="" width="250" height="250">
+            <h4 class="fw-bold p-3">Olimi Expedito</h4>
+            <p class="fw-light">CEO</p>
+            <div class="social fw-bold">
+                <a href="" class = "p-2" style="font-size: 1.5em;"><i class="bi bi-twitter"></i></a>
+                <a href="" class = "p-2" style="font-size: 1.5em;"><i class="bi bi-facebook"></i></a>
+                <a href="" class = "p-2" style="font-size: 1.5em;"><i class="bi bi-instagram"></i></a>
+                <a href="" class = "p-2" style="font-size: 1.5em;"><i class="bi bi-linkedin"></i></a>
+            </div>
+        </div>
+        <div class="col-md-3 text-center">
+            <img style = "background-color: white;" class="img-fuid rounded-circle shadow-sm" src="{% static 'deep/juma_shafara.png'%}" alt="" width="250" height="250">
+            <h4 class="fw-bold p-3">Juma Shafara</h4>
+            <p class="fw-light">Appkied ML Engineer</p>
+            <div class="social fw-bold">
+                <a href="" class = "p-2" style="font-size: 1.5em;"><i class="bi bi-twitter"></i></a>
+                <a href="" class = "p-2" style="font-size: 1.5em;"><i class="bi bi-facebook"></i></a>
+                <a href="" class = "p-2" style="font-size: 1.5em;"><i class="bi bi-instagram"></i></a>
+                <a href="" class = "p-2" style="font-size: 1.5em;"><i class="bi bi-linkedin"></i></a>
+            </div>
+        </div>
+        <div class="col-md-3 text-center">
+            <img style = "background-color: white;" class="img-fuid rounded-circle shadow-sm" src="{% static 'deep/morris_twinomugisha.png'%}" alt="" width="250" height="250">
+            <h4 class="fw-bold p-3">Twinomugisha Morris</h4>
+            <p class="fw-light">Data Scientist</p>
+            <div class="social fw-bold">
+                <a href="" class = "p-2" style="font-size: 1.5em;"><i class="bi bi-twitter"></i></a>
+                <a href="" class = "p-2" style="font-size: 1.5em;"><i class="bi bi-facebook"></i></a>
+                <a href="" class = "p-2" style="font-size: 1.5em;"><i class="bi bi-instagram"></i></a>
+                <a href="" class = "p-2" style="font-size: 1.5em;"><i class="bi bi-linkedin"></i></a>
+            </div>
+        </div>
+    </div>
+</section>
+<div class="px-4 pt-5 my-5 border-bottom text-light fw-light bg-success">
+    <div class="p-md-5 m-5 row d-flex justify-content-between">
+      <h2 class="col-6">See How Easy Plant Disease Detection Can Be</h2>
+      <div class="col-6 d-flex flex-column align-content-center">
+        <p>Detect deases in your plants with out technology</p>
+        <a href="" class="d-inline-block text-center btn btn-warning">
+          Start For Free
+        </a>
+      </div>
+    </div>
+  </div>    
 {% endblock content%}
