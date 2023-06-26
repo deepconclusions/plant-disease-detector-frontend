@@ -16,11 +16,27 @@
       {% if result %}
       <div class="card mb-4">
         <div class="card-body">
-          <h5 class="card-title">Prediction</h5>
+          <h5 class="card-title fw-bold">Prediction</h5>
           <p class="card-text">
-            The predicted class is <strong>{{ result.label }}</strong> with a
-            confidence of {{ result.confidence|floatformat:2 }}.
+            The predicted class is <strong>{{ result.label }}</strong>
           </p>
+          <h5 class="card-title fw-bold">Confidences</h5>
+          <table class="table table-striped">
+            <thead class="thead-dark">
+              <tr>
+                <th>Label</th>
+                <th>Confidence</th>
+              </tr>
+            </thead>
+            <tbody>
+              {% for confidence in result.confidences %}
+              <tr>
+                <td>{{confidence.label}}</td>
+                <td>{{confidence.confidence|floatformat:2}}</td>
+              </tr>
+              {% endfor %}
+            </tbody>
+          </table>
           <p class="card-text">{{ result.description }}</p>
         </div>
       </div>

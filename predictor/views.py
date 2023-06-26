@@ -1,10 +1,12 @@
-import requests
+import json
 import pathlib
-from django.shortcuts import render, redirect
-from .forms import ImageUploadForm
-from django.shortcuts import get_object_or_404
+import requests
+import gradio_client
 from .models import Image
 from django.db.models import Q
+from .forms import ImageUploadForm
+from django.shortcuts import render, redirect
+from django.shortcuts import get_object_or_404
 from django.contrib.auth.decorators import login_required
 # Create your views here.
 
@@ -47,7 +49,7 @@ def uploadImage(request, plant_name):
 def deleteImage(request, plant_name, id):
     image = get_object_or_404(Image, id=id)
     image.delete()
-    return redirect("predictor:upload_image/", plant_name)
+    return redirect("predictor:upload_image", plant_name)
 
 
 def getPredictions(request, plant_name):
@@ -60,34 +62,19 @@ def getPredictions(request, plant_name):
         print(e)  # Debug output
         images = []
     image_url = images[0].image.url
+
     # # Define the API endpoint
-    # api_endpoint = 'http://127.0.0.1:8000/corn/single-prediction/'
+    api_endpoint = f"https://deepconclusions-{plant_name}.hf.space/"
+    client = gradio_client.Client(api_endpoint)
+    response = client.predict(
+        # str (filepath or URL to image) in 'img' Image component
+        f"{BASE_DIR}{image_url}",
+        api_name="/predict"
+    )
 
-    # # Set the headers
-    # headers = {'Content-Type': 'multipart/form-data'}
+    with open(response, 'r') as file:
+        result = json.load(file)
 
-    # # Create a dictionary with the image file and any other form data you want to send
-    # data = {'image': open(f"{BASE_DIR}{image_url}", 'rb')}
+    print(result)
 
-    # print(data)
-    # # Send the POST request
-    # response = requests.post(api_endpoint, headers=headers, files=data)
-
-    # # If the request was successful, parse the JSON response
-    # if response.status_code == 200:
-    #     json_response = response.json()
-    #     # Do something with the JSON response
-    #     print(json_response)
-    #     return json_response
-    # else:
-    #     # Handle the error
-    #     print(f'Request failed with status code {response.status_code}')
-    result = {
-        "prediction": 999,
-        "label": "No predicton",
-        "confidence": 0.0,
-        "description": "No description",
-        "value_error": f"Either No {plant_name} image is provided or It is not labelled, make sure to label with 'corn-image'"
-    }
-
-    return render(request, "predictor/result.html", {"image": images[0], "result": result, "plant_name":plant_name})
+    return render(request, "predictor/result.html", {"image": images[0], "result": result, "plant_name": plant_name})
