@@ -1,0 +1,84 @@
+{% extends 'plants/base.html' %} {% block content %}
+{% load static%}
+<div class="border-top my-3"></div>
+<div class="p-5 container-xlg row">
+<div class="flex-shrink-0 p-3 bg-white col-4">
+    <a href="/" class="d-flex align-items-center pb-3 mb-3 link-dark border-bottom">
+      <svg class="bi pe-none me-2" width="30" height="24"><use xlink:href="#bootstrap"/></svg>
+      <span class="fs-5 fw-semibold">Contents</span>
+    </a>
+    <ul class="list-unstyled ps-0">
+      <li class="mb-1">
+        <button class="btn btn-toggle d-inline-flex align-items-center rounded border-0 collapsed" data-bs-toggle="collapse" data-bs-target="#home-collapse" aria-expanded="true">
+          Free Trial
+        </button>
+        <div class="collapse show" id="home-collapse">
+          <ul class="btn-toggle-nav list-unstyled fw-normal pb-1 small">
+            <li><a href="#free-trial-summary" class="link-dark d-inline-flex rounded">Free Trial Summary</a></li>
+            <li><a href="#free-trial-faqs" class="link-dark d-inline-flex rounded">Free Trial FAQs</a></li>
+          </ul>
+        </div>
+      </li>
+      <li class="mb-1">
+        <button class="btn btn-toggle d-inline-flex align-items-center rounded border-0 collapsed" data-bs-toggle="collapse" data-bs-target="#dashboard-collapse" aria-expanded="false">
+          Getting Started with Deep Conc-Lens
+        </button>
+        <div class="collapse" id="dashboard-collapse">
+          <ul class="btn-toggle-nav list-unstyled fw-normal pb-1 small">
+            <li><a href="#workflow" class="link-dark d-inline-flex rounded">Workflow</a></li>
+            <li><a href="#organization" class="link-dark d-inline-flex rounded">Organization</a></li>
+            <li><a href="#loggingin" class="link-dark d-inline-flex rounded">Logging in</a></li>
+          </ul>
+        </div>
+      </li>
+      <li class="mb-1">
+        <button class="btn btn-toggle d-inline-flex align-items-center rounded border-0 collapsed" data-bs-toggle="collapse" data-bs-target="#orders-collapse" aria-expanded="false">
+          Projects
+        </button>
+        <div class="collapse" id="orders-collapse">
+          <ul class="btn-toggle-nav list-unstyled fw-normal pb-1 small">
+            <li><a href="#" class="link-dark d-inline-flex rounded">New</a></li>
+            <li><a href="#" class="link-dark d-inline-flex rounded">Processed</a></li>
+            <li><a href="#" class="link-dark d-inline-flex rounded">Shipped</a></li>
+            <li><a href="#" class="link-dark d-inline-flex rounded">Returned</a></li>
+          </ul>
+        </div>
+      </li>
+      <li class="mb-1">
+        <button class="btn btn-toggle d-inline-flex align-items-center rounded border-0 collapsed" data-bs-toggle="collapse" data-bs-target="#orders-collapse" aria-expanded="false">
+          Release Notes
+        </button>
+        <div class="collapse" id="orders-collapse">
+          <ul class="btn-toggle-nav list-unstyled fw-normal pb-1 small">
+            <li><a href="#" class="link-dark d-inline-flex rounded">New</a></li>
+            <li><a href="#" class="link-dark d-inline-flex rounded">Processed</a></li>
+            <li><a href="#" class="link-dark d-inline-flex rounded">Shipped</a></li>
+            <li><a href="#" class="link-dark d-inline-flex rounded">Returned</a></li>
+          </ul>
+        </div>
+      </li>
+      <li class="border-top my-3"></li>
+    </ul>
+  </div>
+  <div class="col-8">
+    <div class="scrollable-div" style="height: 500px; overflow-y: auto;">
+    <div>
+        <h1 id="free-trial">Free Trial</h1>
+    <h2 id="free-trial-summary">Free Trial Summary</h2>
+    <p>Lorem ipsum dolor sit amet consectetur adipisicing elit. Amet sed accusamus repudiandae debitis. Aut, consequuntur quos. Nisi eum autem sit culpa ducimus eius soluta ut, saepe quam distinctio molestiae est numquam vero voluptatum modi blanditiis unde dolorem reprehenderit! Provident suscipit obcaecati ipsa rem harum sint nesciunt! Excepturi odio quas voluptate libero. Obcaecati sit id excepturi doloribus quaerat fugiat suscipit praesentium laborum repellendus omnis blanditiis iste recusandae deserunt magnam tenetur itaque, odit voluptatem neque, delectus exercitationem debitis atque perspiciatis! Ab reprehenderit dignissimos praesentium nemo est autem dolorem inventore neque consectetur recusandae repellat, velit atque facilis assumenda perspiciatis doloremque! Hic fuga delectus ea nemo libero at eligendi tempore officiis odio exercitationem repellat officia assumenda perferendis, eaque quia atque itaque quis quam, suscipit temporibus amet quibusdam praesentium quidem. Similique dolorum earum accusamus doloribus nemo, at sapiente totam consequuntur nulla minus dolore maiores optio architecto possimus hic, neque reiciendis commodi soluta! Modi fugit nisi odit? Eveniet nesciunt ea consectetur dolores quod quaerat, iusto ad deserunt magni esse perspiciatis eligendi soluta voluptates a ipsum ratione molestias recusandae, porro officiis eos sequi quisquam aut dolorem. Eum, inventore id harum velit consequatur voluptatem non facilis libero veritatis aliquid ipsum nemo iste cumque perferendis sit delectus dolor fugiat?</p>
+    <h2 id="free-trial-faqs">Free Trial FAQs</h2>
+    <p>Lorem ipsum dolor sit amet consectetur adipisicing elit. Amet sed accusamus repudiandae debitis. Aut, consequuntur quos. Nisi eum autem sit culpa ducimus eius soluta ut, saepe quam distinctio molestiae est numquam vero voluptatum modi blanditiis unde dolorem reprehenderit! Provident suscipit obcaecati ipsa rem harum sint nesciunt! Excepturi odio quas voluptate libero. Obcaecati sit id excepturi doloribus quaerat fugiat suscipit praesentium laborum repellendus omnis blanditiis iste recusandae deserunt magnam tenetur itaque, odit voluptatem neque, delectus exercitationem debitis atque perspiciatis! Ab reprehenderit dignissimos praesentium nemo est autem dolorem inventore neque consectetur recusandae repellat, velit atque facilis assumenda perspiciatis doloremque! Hic fuga delectus ea nemo libero at eligendi tempore officiis odio exercitationem repellat officia assumenda perferendis, eaque quia atque itaque quis quam, suscipit temporibus amet quibusdam praesentium quidem. Similique dolorum earum accusamus doloribus nemo, at sapiente totam consequuntur nulla minus dolore maiores optio architecto possimus hic, neque reiciendis commodi soluta! Modi fugit nisi odit? Eveniet nesciunt ea consectetur dolores quod quaerat, iusto ad deserunt magni esse perspiciatis eligendi soluta voluptates a ipsum ratione molestias recusandae, porro officiis eos sequi quisquam aut dolorem. Eum, inventore id harum velit consequatur voluptatem non facilis libero veritatis aliquid ipsum nemo iste cumque perferendis sit delectus dolor fugiat?</p>
+    </div>
+    <div>
+        <h1>Getting Started With Deep Conc-Lens</h1>
+        <h2 id="Workflow">Workflow</h2>
+        <p>Lorem ipsum dolor sit amet consectetur adipisicing elit. Consequuntur, nisi reiciendis! Odit perspiciatis non libero aspernatur. Animi dolore earum cum facilis quisquam veniam explicabo, ullam harum inventore nostrum accusantium repudiandae reprehenderit officia deleniti repellendus suscipit dolorum? Illo deserunt nobis ipsa totam, ipsum maxime suscipit. Quisquam voluptates rem accusamus dolor possimus blanditiis quaerat similique reprehenderit temporibus eius officiis sed sit dolores voluptatem quibusdam eum obcaecati quasi, beatae, illo ullam voluptas eaque quae harum veritatis! Facere laudantium voluptatem, labore suscipit non, dolores maiores accusamus aut perferendis itaque recusandae iure fugit repudiandae excepturi odio culpa illo? Exercitationem quod debitis ipsa nemo non veritatis ullam eius at labore vitae? Possimus eligendi id voluptas adipisci minima optio doloremque dolorum asperiores corporis aliquid delectus ex consectetur, deserunt, quaerat vel dolorem assumenda architecto quasi corrupti ea saepe quos! Aperiam fugiat nulla sapiente! Hic ex eligendi et cum! Numquam ipsa quod eligendi illo in ratione earum. Itaque eius asperiores mollitia dolor nam maxime illum laudantium natus iure quo iusto corporis fugit consequuntur ipsam a veritatis quas voluptates accusantium saepe facilis debitis eaque, exercitationem, amet omnis? Voluptatum provident totam, repellat sunt et a qui quae quam illum laborum culpa voluptas nobis? Possimus unde sapiente quod? Inventore tenetur ad voluptates.</p>
+        <h2 id="organization">Organization</h2>
+        <p>Lorem ipsum dolor sit amet consectetur adipisicing elit. Repudiandae numquam in facilis quo saepe alias nemo voluptatibus unde earum itaque laudantium veritatis iure velit fugiat, minima omnis hic? Ut cumque corrupti exercitationem sapiente vero facere. Dignissimos eveniet totam labore suscipit dolorum ad soluta sed eos deserunt distinctio accusantium fugiat eius repellendus accusamus quis, saepe cumque impedit earum qui minus explicabo ex a rem! Quibusdam necessitatibus, odio mollitia error facere obcaecati expedita voluptatem id molestias nihil tempore, quod repudiandae ipsam dolore exercitationem doloremque excepturi eum fuga eos, quisquam repellendus nisi illum magni. Impedit ipsam fugit explicabo rerum omnis ducimus officiis nihil veniam, laudantium et. Animi nesciunt tenetur sequi reiciendis accusantium tempora distinctio impedit eos molestias suscipit molestiae quas perferendis iste obcaecati saepe sunt totam placeat maxime ducimus officiis vitae autem, veritatis repellat omnis! Exercitationem, ut iusto officiis earum velit, debitis voluptates numquam vitae accusamus dolor architecto repellendus cupiditate. Aliquid iure quo sunt atque cum at earum placeat maxime, doloremque modi totam, nostrum quidem. Expedita molestias commodi beatae obcaecati sapiente ad accusamus distinctio similique, nihil sequi, laborum dolorum facilis aliquid nulla eveniet ut reprehenderit magnam? Quo quis nisi quos tempora magni delectus eveniet? Sequi, ipsam obcaecati. Reiciendis corporis voluptate vitae atque quae.</p>
+        <h2 id="loggingin">Logging In</h2>
+        <p>Lorem ipsum dolor sit amet, consectetur adipisicing elit. Nobis aspernatur eligendi, nulla id sequi facere, ex molestiae provident cupiditate harum quasi illum architecto voluptate mollitia nisi at fugit, accusantium facilis!</p>
+    </div>
+    </div>
+</div>
+</div>
+  {% endblock content %}

@@ -1,5 +1,5 @@
 {% extends 'plants/base.html' %} {% block content %}
-
+{% load static %}
 <div class="px-4 pt-5 my-5 text-center border-bottom">
   <h1 class="fw-bold">Deep Conc-Lens, An Easy Way</h1>
   <h1 class="fw-bold">to Detect Plant Diseases</h1>
@@ -17,12 +17,12 @@
       </a>
     </div>
   </div>
-  <div class="" style="">
+  <div class="">
     <div class="container px-5">
       <img
-        src="media/deep/DeepConcLens3.png"
+        src="{% static 'deep/DeepConcLens3.png' %}"
         class="img-fluid border rounded-3 shadow-lg mb-4"
-        alt="Example image"
+        alt="deep conclusions working structure"
         width="900"
         height="700"
         loading="lazy"
@@ -49,7 +49,7 @@
     </main>
     <aside class="col-md-3 col-12">
       <img
-        src="media/deep/black_rot.jpg"
+        src="{% static 'deep/black_rot.jpg' %}"
         width="100%"
         class="img-fluid border shadow rounded"
       />
@@ -61,7 +61,7 @@
 >
   <div class="m-5 row d-flex justify-content-between">
     <aside class="col-md-3 col-12">
-      <img src="media/deep/black_rot.jpg" width="100%" class="rounded" />
+      <img src="{% static 'deep/tomato_leaf.jpg' %}" width="100%" class="rounded" />
     </aside>
     <main class="col-md-6 col-12 pt-5">
       <h4 class="fw-bold">HIGER SPEED, GREATER ACCURACY</h4>
@@ -123,7 +123,7 @@
               </div>
               <div class="col-md-6">
                 <img
-                  src="media/deep/DeepConcLens3.png"
+                  src="{% static 'deep/select_plant.png' %}"
                   class="img-fluid border rounded-3 shadow-lg mb-4"
                   alt="Example image"
                   width="500"
@@ -153,10 +153,8 @@
             aria-labelledby="headingTwo"
             data-bs-parent="#accordionExample"
           >
-            <div
-              class="p-md-5 m-md-5 accordion-body d-flex justify-content-between"
-            >
-              <div>
+          <div class="p-md-5 m-md-5 accordion-body d-flex row">
+            <div class="col-md-6">
                 <h2>Select leaf images</h2>
                 <p>
                   Choose leaf images from which you want to detect the disease
@@ -170,9 +168,9 @@
                   diseases in your plant
                 </p>
               </div>
-              <div class="">
+              <div class="col-md-6">
                 <img
-                  src="media/deep/DeepConcLens3.png"
+                  src="{% static 'deep/select_images.png'%}"
                   class="img-fluid border rounded-3 shadow-lg mb-4"
                   alt="Example image"
                   width="500"
@@ -202,10 +200,8 @@
             aria-labelledby="headingThree"
             data-bs-parent="#accordionExample"
           >
-            <div
-              class="p-md-5 m-md-5 accordion-body d-flex justify-content-between"
-            >
-              <div>
+          <div class="p-md-5 m-md-5 accordion-body d-flex row">
+            <div class="col-md-6">
                 <h2>View Results</h2>
                 <p>
                   After a few seconds, you should be redirected to the "Results"
@@ -216,9 +212,9 @@
                   different image to confirm the prediction
                 </p>
               </div>
-              <div class="">
+              <div class="col-md-6">
                 <img
-                  src="media/deep/DeepConcLens3.png"
+                  src="{% static 'deep/results.png'%}"
                   class="img-fluid border rounded-3 shadow-lg mb-4"
                   alt="Example image"
                   width="500"

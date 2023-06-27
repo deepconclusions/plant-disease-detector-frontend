@@ -23,11 +23,12 @@ app_name = "plants"
 
 urlpatterns = [
     path("admin/", admin.site.urls),
-    path("", views.home),
-    path("about", views.about),
+    path("", views.home, name="home"),
+    path("about", views.about, name="about"),
+    path("pricing", views.pricing, name = "pricing"),
+    path("support", views.support, name= "support"),
+    path("careers", views.careers, name= "careers"),
+    path("videos", views.videos, name = "videos"),
     path('accounts/', include('accounts.urls')),
     path('predictor/', include('predictor.urls'))
-]
-
-if settings.DEBUG:
-    urlpatterns += static(settings.MEDIA_URL, document_root=settings.MEDIA_ROOT)
+] + static(settings.MEDIA_URL, document_root=settings.MEDIA_ROOT)

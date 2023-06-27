@@ -1,6 +1,12 @@
 {
+<<<<<<< HEAD
   "[python]": {
     "editor.defaultFormatter": "ms-python.autopep8"
   },
   "python.formatting.provider": "none"
 }
+=======
+    "git.enabled": false,
+    "editor.fontFamily": "'fira code'"
+}
+>>>>>>> 4d09573f267c3f5c659dadef08f4292606245118

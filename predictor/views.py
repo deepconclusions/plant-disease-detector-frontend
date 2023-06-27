@@ -1,6 +1,5 @@
 import json
 import pathlib
-import requests
 import gradio_client
 from .models import Image
 from django.db.models import Q
@@ -8,9 +7,14 @@ from .forms import ImageUploadForm
 from django.shortcuts import render, redirect
 from django.shortcuts import get_object_or_404
 from django.contrib.auth.decorators import login_required
+from django.shortcuts import render, redirect, HttpResponse
 # Create your views here.
 
 BASE_DIR = pathlib.Path(__file__).resolve().parent.parent
+
+
+def colored(r, g, b, text):
+    return "\033[38;2;{};{};{}m{} \033[38;2;255;255;255m".format(r, g, b, text)
 
 
 @login_required(login_url='/accounts/login')
