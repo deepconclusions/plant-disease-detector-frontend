@@ -3,9 +3,11 @@
 set -o errexit
 
 pip install --upgrade pip
-poetry add 'whitenoise[brotli]'
+pip install 'whitenoise[brotli]'
 pip install --upgrade Pillow
 
+echo "Installing the latest version of poetry..."
+pip install poetry==1.2.0
 rm poetry.lock
 poetry lock
 poetry install
