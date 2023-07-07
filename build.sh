@@ -3,7 +3,7 @@
 set -o errexit
 
 pip install --upgrade pip
-
+poetry add 'whitenoise[brotli]'
 pip install --upgrade Pillow
 
 echo "Installing the latest version of poetry..."
@@ -16,3 +16,4 @@ python manage.py collectstatic --no-input
 python manage.py migrate
 
 pip install --force-reinstall -U setuptools
+
