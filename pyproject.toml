@@ -10,6 +10,9 @@ python = "^3.9"
 django = "^4.1.7"
 gradio = "^3.35.2"
 gradio-client = "^0.2.7"
+dj-database-url = "^2.0.0"
+psycopg2-binary = "^2.9.6"
+gunicorn = "^20.1.0"
 
 
 [build-system]
