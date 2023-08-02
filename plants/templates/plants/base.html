@@ -34,9 +34,18 @@
       rel="stylesheet"
     />
 
-      <!-- Vendor CSS Files -->
-  <link href="{% static 'css/bootstrap-icons/bootstrap-icons.css' %}" rel="stylesheet">
-  <link href="{% static 'css/aos/aos.css" rel="stylesheet' %}">
+    <!-- Vendor CSS Files -->
+    <link
+      href="{% static 'css/bootstrap-icons/bootstrap-icons.css' %}"
+      rel="stylesheet"
+    />
+    <link href="{% static 'css/aos/aos.css" rel="stylesheet' %}" />
+
+    <link
+      rel="shortcut icon"
+      href="{% static '/deep/DeepConclusionsLogo.png' %}"
+      type="image/x-icon"
+    />
 
     <title>DC plant disease predcitor</title>
     <style>
@@ -107,9 +116,7 @@
                 >
               </li>
               <li class="nav-item">
-                <a class="nav-link" href="/pricing"
-                  >Pricing</a
-                >
+                <a class="nav-link" href="/pricing">Pricing</a>
               </li>
               <li class="nav-item dropdown">
                 <a
@@ -122,7 +129,7 @@
                 <ul class="dropdown-menu">
                   <li><a class="dropdown-item" href="/about">About Us</a></li>
                   <li><a class="dropdown-item" href="/careers">Careers</a></li>
-                  <li><a class="dropdown-item" href="#">FAQs</a></li>
+                  <li><a class="dropdown-item" href="/faqs">FAQs</a></li>
                 </ul>
               </li>
               <li class="nav-item dropdown">
@@ -135,7 +142,13 @@
                 >
                 <ul class="dropdown-menu">
                   <li><a class="dropdown-item" href="/videos">Videos</a></li>
-                  <li><a class="dropdown-item" href="https://deepconclusions.com/blogs">Blogs</a></li>
+                  <li>
+                    <a
+                      class="dropdown-item"
+                      href="https://deepconclusions.com/blogs"
+                      >Blogs</a
+                    >
+                  </li>
                   <!-- <li><a class="dropdown-item" href="#">Community</a></li> -->
                   <!-- <li><a class="dropdown-item" href="/support">Support</a></li> -->
                 </ul>
@@ -178,9 +191,7 @@
             <h5>Company</h5>
             <ul class="nav flex-column">
               <li class="nav-item mb-2">
-                <a href="about" class="nav-link p-0 text-muted"
-                  >About Us</a
-                >
+                <a href="about" class="nav-link p-0 text-muted">About Us</a>
               </li>
               <li class="nav-item mb-2">
                 <a href="careers" class="nav-link p-0 text-muted">Careers</a>
@@ -201,7 +212,11 @@
                 <a href="/videos" class="nav-link p-0 text-muted">Video</a>
               </li>
               <li class="nav-item mb-2">
-                <a href="https://deepconclusions.com/blogs" class="nav-link p-0 text-muted">Blogs</a>
+                <a
+                  href="https://deepconclusions.com/blogs"
+                  class="nav-link p-0 text-muted"
+                  >Blogs</a
+                >
               </li>
               <!-- <li class="nav-item mb-2">
                 <a href="#" class="nav-link p-0 text-muted">Community</a>
@@ -255,21 +270,21 @@
             <li class="ms-3">
               <a class="link-dark" href="#"
                 ><svg class="bi" width="24" height="24">
-                  <use xlink:href="#twitter" />
-                  </svg></a>
+                  <use xlink:href="#twitter" /></svg
+              ></a>
             </li>
             <li class="ms-3">
               <a class="link-dark" href="#"
                 ><svg class="bi" width="24" height="24">
                   <use xlink:href="#instagram"></use>
-                  </svg>
-                </a>
+                </svg>
+              </a>
             </li>
             <li class="ms-3">
               <a class="link-dark" href="#"
                 ><svg class="bi" width="24" height="24">
-                  <use xlink:href="#facebook" />
-                </svg></a>
+                  <use xlink:href="#facebook" /></svg
+              ></a>
             </li>
           </ul>
         </div>

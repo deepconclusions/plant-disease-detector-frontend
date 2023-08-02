@@ -30,6 +30,7 @@ urlpatterns = [
     path("support", views.support, name="support"),
     path("careers", views.careers, name="careers"),
     path("videos", views.videos, name="videos"),
+    path(route='faqs', view=views.faqs, name='faqs'),
     path('accounts/', include('accounts.urls')),
     path('predictor/', include('predictor.urls'))
 ]
