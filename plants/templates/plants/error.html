@@ -1,0 +1,15 @@
+{% extends 'plants/base.html' %} {% block content %} {% load static %}
+<div class="flex justify-content-center pb-5">
+  <div class="p-5 mx-5 border rounded shadow" style="background: lightyellow">
+    <h2 class="fw-bold">A problem occured!</h2>
+    <p><span class="fw-semibold">Error:</span> {{ error }}</p>
+    <p><span class="fw-semibold">Message:</span> {{ message }}</p>
+    <input
+      class="btn btn-primary"
+      type="button"
+      value="Go Back"
+      onClick="javascript:history.go(-1);"
+    />
+  </div>
+</div>
+{% endblock content %}

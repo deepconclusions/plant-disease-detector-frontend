@@ -19,7 +19,9 @@ def colored(r, g, b, text):
 
 @login_required(login_url='/accounts/login')
 def selectPlant(request):
-    return render(request, "predictor/select.html", {})
+    context = {}
+    template_name = "predictor/select.html"
+    return render(request=request, template_name=template_name, context=context)
 
 
 def uploadImage(request, plant_name):
@@ -28,11 +30,15 @@ def uploadImage(request, plant_name):
         try:
             images = Image.objects.filter(
                 Q(user=request.user) & Q(name=plant_name))
-            print(f"images:{images}")
+            context = {"form": form, "images": images,
+                       "plant_name": plant_name}
+            template_name = "predictor/predict.html"
         except Exception as e:
-            print(e)  # Debug output
-            images = []
-        return render(request, "predictor/predict.html", {"form": form, "images": images, "plant_name": plant_name})
+            context = {
+                "error": e, 'message': 'An error occured while fetching your old images'}
+            template_name = "plants/error.html"
+            return render(request=request, template_name=template_name, context=context)
+        return render(request=request, template_name=template_name, context=context)
 
     if request.method == 'POST':
         form = ImageUploadForm(request.POST, request.FILES)
@@ -47,7 +53,9 @@ def uploadImage(request, plant_name):
         form = ImageUploadForm()
         images = Image.objects.filter(
             Q(user=request.user) & Q(name=plant_name))
-    return render(request, "predictor/predict.html", {"form": form, "images": images})
+        context = {"form": form, "images": images}
+        template_name = "predictor/predict.html"
+    return render(request=request, template_name=template_name, context=context)
 
 
 def deleteImage(request, plant_name, id):
@@ -62,23 +70,45 @@ def getPredictions(request, plant_name):
         images = Image.objects.filter(
             Q(user=request.user) & Q(name=plant_name))
         print(f"images:{images}")
-    except Exception as e:
-        print(e)  # Debug output
-        images = []
-    image_url = images[0].image.url
+        image_url = images[0].image.url
+    except Image.DoesNotExist as e:
+        context = {
+            'error': e,
+            'message': 'The selected image does not exist, try uploading another image.'
+        }
+        template_name = "plants/error.html"
+        return render(request=request, template_name=template_name, context=context)
+
+    except IndexError as e:
+        context = {
+            'error': e,
+            'message': 'You have not uploaded any images yet.'
+        }
+        template_name = "plants/error.html"
+        return render(request=request, template_name=template_name, context=context)
 
     # # Define the API endpoint
-    api_endpoint = f"https://deepconclusions-{plant_name}.hf.space/"
-    client = gradio_client.Client(api_endpoint)
-    response = client.predict(
-        # str (filepath or URL to image) in 'img' Image component
-        f"{BASE_DIR}{image_url}",
-        api_name="/predict"
-    )
+    try:
+        api_endpoint = f"https://deepconclusions-{plant_name}.hf.space/"
+        client = gradio_client.Client(api_endpoint)
+        response = client.predict(
+            # str (filepath or URL to image) in 'img' Image component
+            f"{BASE_DIR}{image_url}",
+            api_name="/predict"
+        )
 
-    with open(response, 'r') as file:
-        result = json.load(file)
+        with open(response, 'r') as file:
+            result = json.load(file)
 
-    print(result)
+        context = {"image": images[0],
+                   "result": result, "plant_name": plant_name}
+        template_name = "predictor/result.html"
+    except Exception as e:
+        context = {
+            'error': e,
+            'message': 'You can not make predictions now'
+        }
+        template_name = "plants/error.html"
+        return render(request=request, template_name=template_name, context=context)
 
-    return render(request, "predictor/result.html", {"image": images[0], "result": result, "plant_name": plant_name})
+    return render(request=request, template_name=template_name, context=context)
