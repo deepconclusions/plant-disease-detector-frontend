@@ -64,6 +64,19 @@ def deleteImage(request, plant_name, id):
     return redirect("predictor:upload_image", plant_name)
 
 
+def getGeneralPredictions(filename):
+    import requests
+
+    API_URL = "https://api-inference.huggingface.co/models/linkanjarad/mobilenet_v2_1.0_224-plant-disease-identification"
+    headers = {"Authorization": "Bearer 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"}
+
+    with open(filename, "rb") as f:
+        data = f.read()
+    response = requests.post(API_URL, headers=headers, data=data)
+
+    return response.json()
+
+
 def getPredictions(request, plant_name):
     # get image path
     try:
@@ -89,20 +102,22 @@ def getPredictions(request, plant_name):
 
     # # Define the API endpoint
     try:
-        api_endpoint = f"https://deepconclusions-{plant_name}.hf.space/"
-        client = gradio_client.Client(api_endpoint)
-        response = client.predict(
-            # str (filepath or URL to image) in 'img' Image component
-            f"{BASE_DIR}{image_url}",
-            api_name="/predict"
-        )
+        # if plant_name == 'general':
+        result = getGeneralPredictions(f"{BASE_DIR}{image_url}")[0]
+        #     print(f"result: {result}")
 
-        with open(response, 'r') as file:
-            result = json.load(file)
+        # else:
+        #     api_endpoint = f"https://deepconclusions-{plant_name}.hf.space/"
+        #     client = gradio_client.Client(api_endpoint)
+        #     response = client.predict(
+        #         # str (filepath or URL to image) in 'img' Image component
+        #         f"{BASE_DIR}{image_url}",
+        #         api_name="/predict"
+        #     )
 
-        context = {"image": images[0],
-                   "result": result, "plant_name": plant_name}
-        template_name = "predictor/result.html"
+        #     with open(response, 'r') as file:
+        #         result = json.load(file)
+
     except Exception as e:
         context = {
             'error': e,
@@ -111,4 +126,7 @@ def getPredictions(request, plant_name):
         template_name = "plants/error.html"
         return render(request=request, template_name=template_name, context=context)
 
+    context = {"image": images[0],
+               "result": result, "plant_name": plant_name}
+    template_name = "predictor/result.html"
     return render(request=request, template_name=template_name, context=context)

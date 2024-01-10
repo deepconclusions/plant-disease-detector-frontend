@@ -2,7 +2,9 @@
 <div class="container mt-5">
   <div class="row justify-content-center">
     <div class="col-md-8">
-      <h2 class="mb-4">Corn Disease Prediction Results</h2>
+      <h2 class="mb-4 text-capitalize">
+        {{plant_name}} Disease Prediction Results
+      </h2>
       <div class="card mb-4">
         <div class="card-body">
           <h5 class="card-title">Image</h5>
@@ -20,23 +22,6 @@
           <p class="card-text">
             The predicted class is <strong>{{ result.label }}</strong>
           </p>
-          <h5 class="card-title fw-bold">Confidences</h5>
-          <table class="table table-striped">
-            <thead class="thead-dark">
-              <tr>
-                <th>Label</th>
-                <th>Confidence</th>
-              </tr>
-            </thead>
-            <tbody>
-              {% for confidence in result.confidences %}
-              <tr>
-                <td>{{confidence.label}}</td>
-                <td>{{confidence.confidence|floatformat:2}}</td>
-              </tr>
-              {% endfor %}
-            </tbody>
-          </table>
           <p class="card-text">{{ result.description }}</p>
         </div>
       </div>
