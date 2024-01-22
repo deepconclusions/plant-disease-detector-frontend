@@ -22,7 +22,7 @@
           <p class="card-text">
             The predicted class is <strong>{{ result }}</strong>
           </p>
-          <p class="card-text">{{ description }}</p>
+          <p class="card-text">{{ description|safe }}</p>
         </div>
       </div>
       {% else %}

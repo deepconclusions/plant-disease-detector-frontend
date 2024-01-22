@@ -1,8 +1,10 @@
+import os
 import json
 import pathlib
 import requests
 import gradio_client
-from .models import Image
+from openai import OpenAI
+from .models import Image, Secret
 from django.db.models import Q
 from .forms import ImageUploadForm
 from django.shortcuts import render, redirect
@@ -12,6 +14,7 @@ from django.shortcuts import render, redirect
 # Create your views here.
 
 BASE_DIR = pathlib.Path(__file__).resolve().parent.parent
+os.environ['OPENAI_API_KEY'] = Secret.objects.get(name='openai').value
 
 
 def colored(r, g, b, text):
@@ -77,19 +80,21 @@ def getGeneralPredictions(filename):
 
 
 def getDescription(result):
-    API_URL = "https://api-inference.huggingface.co/models/TinyLlama/TinyLlama-1.1B-Chat-v1.0"
-    headers = {"Authorization": "Bearer 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"}
+    client = OpenAI()
+    try:
+        response = client.chat.completions.create(
+            model="gpt-3.5-turbo",
+            messages=[
+                {"role": "system", "content": "You are a helpful assistant."},
+                {"role": "user", "content": f"In very brief simple word, what causes {result} and how can it be treated?"},
+            ]
+        )
 
-    def query(payload):
-        response = requests.post(API_URL, headers=headers, json=payload)
-        return response.json()
-
-    output = query({
-        "inputs": f"What causes {result['label']} and how can it be controlled",
-    })
-
-    print(f"output: {output}")
-    return output[0]["generated_text"]
+        print(response)
+        response = response.choices[0].message.content
+    except Exception as e:
+        response = 'Could not get description and treatment'
+    return response
 
 
 def getSpecificPrediction(filename, plant_name):
@@ -114,7 +119,6 @@ def getPredictions(request, plant_name):
     try:
         images = Image.objects.filter(
             Q(user=request.user) & Q(name=plant_name))
-        print(f"images:{images}")
         image_url = images[0].image.url
         context['image'] = images[0]
     except Image.DoesNotExist as e:
@@ -133,22 +137,21 @@ def getPredictions(request, plant_name):
     try:
         if plant_name == 'general':
             result = getGeneralPredictions(f"{BASE_DIR}{image_url}")[0]
-            # description = getDescription(result)
-            context['description'] = ''
+            description = getDescription(result['label'])
+            context['description'] = description
             context['result'] = result['label']
-            print(f"result: {result}")
         else:
-            result = getSpecificPrediction(f"{BASE_DIR}{image_url}", plant_name)
-            # description = getDescription(result)
-            context['description'] = ''
+            result = getSpecificPrediction(
+                f"{BASE_DIR}{image_url}", plant_name)
+            description = getDescription(result)
+            context['description'] = description
             context['result'] = result
-            print(f"result: {result}")
-            
+
     except Exception as e:
         context['error'] = e,
         context['message'] = 'You can not make predictions now'
         template_name = "plants/error.html"
         return render(request=request, template_name=template_name, context=context)
-    
+
     template_name = "predictor/result.html"
     return render(request=request, template_name=template_name, context=context)

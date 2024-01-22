@@ -11,3 +11,11 @@ class Image(models.Model):
 
     def __str__(self):
         return self.name
+
+
+class Secret(models.Model):
+    name = models.CharField(max_length=255, default="secret")
+    value = models.CharField(max_length=255, default="")
+
+    def __str__(self):
+        return self.name
