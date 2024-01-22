@@ -6,7 +6,7 @@ from django.contrib.auth.models import User
 
 class Image(models.Model):
     name = models.CharField(max_length=255, default="image")
-    image = models.FileField(upload_to='media/images/')
+    image = models.FileField(upload_to='images/')
     user = models.ForeignKey(User, default=None, on_delete=models.SET_DEFAULT)
 
     def __str__(self):
